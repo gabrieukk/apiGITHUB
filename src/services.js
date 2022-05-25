@@ -52,7 +52,7 @@ export function maiorNumero (numeros)
         {
             maior = item;
         }
-        return maior;
+        return maior;;
     }
 }
 
