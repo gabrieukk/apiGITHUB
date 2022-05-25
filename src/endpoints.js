@@ -95,10 +95,10 @@ server.post('/dia2/maiornumero', (req,resp) => {
     try {
         const numeros = req.body;
 
-        const x = maiorNumero(numeros)
+        const x = maiorNumero(numeros);
         resp.send({
             MaiorNumero : x
-        })
+        });
     } catch (err) {
         resp.send({
             erro : err.message

@@ -40,20 +40,16 @@ export function cinemaIngresso (qtdInteira,qtdMeia,dia,nacionalidade) {
 
 }
 
-export function maiorNumero (numeros)
-{
+export function maiorNumero(numeros){
     let maior = Number.MIN_VALUE;
-
-    for(let item of numeros)
-    {
+    for (let item of numeros){
         if (item > maior)
-        {
+        
             maior = item;
         }
         return maior;
-        
     }
-}
+
 
 export function frequenciaCaracter(texto,caractere) {
     let qtd = 0;
