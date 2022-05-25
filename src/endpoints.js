@@ -1,4 +1,4 @@
-import {dobro,somar,temperatura,corprimaria, cinemaIngresso, maiorNumero} from './services.js'
+import {dobro,somar,temperatura,corprimaria, cinemaIngresso, maiorNumero,frequenciaCaracter} from './services.js'
 
 import { Router } from "express";
 const server = Router();
@@ -58,34 +58,66 @@ server.get('/temperatura',(req,resp) => {
 })
 
 server.get('/corprimaria/:cor', (req,resp) => {
-    const a = (req.params.cor);
+    try {
+        const a = (req.params.cor);
 
-    const x = corprimaria(a);
+        const x = corprimaria(a);
 
-    resp.send({
-        primaria : x
-    })
+        resp.send({
+            primaria : x
+        });
+    }   catch (err) {
+        resp.send({
+            erro : err.message
+        })
+}
+
 
 })
 
 server.post('/dia2/ingressocinema', (req,resp) => {
-    const {qtdInteiras, qtdMeias, dia, nacionalidade} = req.body;
+    try {
+        const {qtdInteiras, qtdMeias, dia, nacionalidade} = req.body;
 
-    const x = cinemaIngresso(qtdInteiras,qtdMeias,dia,nacionalidade);
+        const x = cinemaIngresso(qtdInteiras,qtdMeias,dia,nacionalidade);
 
-    resp.send({
-        valor : x
-    })
-
+        resp.send({
+            valor : x
+        });
+    } catch (err) {
+        resp.send({
+            erro : err.message
+        })
+    }
 })
 
 server.post('/dia2/maiornumero', (req,resp) => {
-    let numeros = req.body.numeros
+    try {
+        const numeros = req.body;
 
-    const x = maiorNumero(numeros)
-    resp.send({
-        MaiorNumero : x
-    })
+        const x = maiorNumero(numeros)
+        resp.send({
+            MaiorNumero : x
+        })
+    } catch (err) {
+        resp.send({
+            erro : err.message
+        })
+    }
+})
+
+server.get('/dia2/freqcaractere/:texto/:caractere',(req,resp) => {
+    try {
+        const { texto, caractere } = req.params;
+        const freq = frequenciaCaracter(texto,caractere);
+        resp.send({
+            frequencia : freq
+        })
+    } catch (err) {
+        resp.send({
+            erro : err.message
+        })
+    }
 })
 
 export default server;

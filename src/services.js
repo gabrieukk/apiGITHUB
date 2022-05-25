@@ -16,6 +16,7 @@ export function temperatura (t) {
 }
 
 export function corprimaria (c) {
+    c=c.toLowerCase();
     if (c == "vermelho" || c == "azul" || c == "amarelo") {
         return true;
     }
@@ -26,25 +27,22 @@ export function corprimaria (c) {
 
 export function cinemaIngresso (qtdInteira,qtdMeia,dia,nacionalidade) {
 
-    let total = 0;
-
-    if (nacionalidade == "brasileira") {
-        total = (qtdInteira + qtdMeia) * 5.0;
+    if (nacionalidade.toLowerCase() == "brasileira") {
+        return (qtdInteira + qtdMeia) * 5;
     }
 
-    else if (dia == "quarta-feira") {
-        total = (qtdInteira + qtdMeia) * (28.5/2);
+    else if (dia.toLowerCase() == "quarta-feira") {
+        return (qtdInteira + qtdMeia) * (28.5/2);
     }
     else {
-        total = (qtdInteira * 28.5) + (qtdMeia * 28/2);
+        return (qtdInteira * 28.5) + (qtdMeia * 28/2);
     }
 
-    return total;
 }
 
 export function maiorNumero (numeros)
 {
-    let maior = - 1;
+    let maior = Number.MIN_VALUE;
 
     for(let item of numeros)
     {
@@ -52,7 +50,18 @@ export function maiorNumero (numeros)
         {
             maior = item;
         }
-        return maior;;
+        return maior;
+        
     }
 }
+
+export function frequenciaCaracter(texto,caractere) {
+    let qtd = 0;
+    for (let letra of texto) {
+        if (letra == caractere)
+            qtd++;
+    } 
+    return qtd;
+}
+
 

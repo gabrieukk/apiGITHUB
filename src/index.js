@@ -11,4 +11,4 @@ server.use(express.json());
 server.use(endpoints);
 
 server.listen(process.env.PORT,
-             () => console.log(`API tá onnn na porta ${process.env.PORT}`))
+             () => console.log(`API encontra-se online na porta ${process.env.PORT}`))
